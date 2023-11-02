@@ -1,6 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import { RouterLink, RouterView } from 'vue-router'
+  import { RouterLink, RouterView } from 'vue-router'
+  import { ref } from 'vue';
+  import SvgIcon from '@jamescoyle/vue-icon';
+  import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiCog } from '@mdi/js';
+
+  const icons = {
+    path: ref(mdiCheckboxBlankBadge),
+    path1: ref(mdiFormatListBulletedType),
+    path2: ref(mdiFileDocument),
+    path3: ref(mdiCog)
+  };
 </script>
 
 <template>
@@ -9,10 +18,10 @@ import { RouterLink, RouterView } from 'vue-router'
     <img alt="Vue logo" class="logo" src="./assets/logo REC.png"  />
     <nav>
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/assigned">Toegewezen Rap.</RouterLink>
-      <RouterLink to="/performed">Uitgevoerde Rap.</RouterLink>
-      <RouterLink to="/knowledge">KennisBase</RouterLink>
-      <RouterLink to="/settings">Instellingen</RouterLink>
+      <RouterLink to="/assigned"><svg-icon type="mdi" :path="icons.path.value" /><span>Toegewezen Rap.</span></RouterLink>
+      <RouterLink to="/performed"><svg-icon type="mdi" :path="icons.path1.value" /><span>Uitgevoerde Rap.</span></RouterLink>
+      <RouterLink to="/knowledge"><svg-icon type="mdi" :path="icons.path2.value" /><span>KennisBase</span></RouterLink>
+      <RouterLink to="/settings"><svg-icon type="mdi" :path="icons.path3.value" /><span>Instellingen</span></RouterLink>
     </nav>
     
   
@@ -53,6 +62,8 @@ import { RouterLink, RouterView } from 'vue-router'
     font-size: 1.5rem;
     color: var(--black);
     transition: color 0.25s;
+    display: flex;
+    align-items: center;
   }
   nav a:hover{
     text-decoration: none;
@@ -60,6 +71,9 @@ import { RouterLink, RouterView } from 'vue-router'
   }
 
   main{
-    background-image: linear-gradient(50deg, var(--teal) 58%, var(--black) 72%);
+    /* background-image: linear-gradient(50deg, var(--teal) 58%, var(--black) 72%); */
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--black) var(--black) var(--teal) var(--teal);
   }
 </style>
