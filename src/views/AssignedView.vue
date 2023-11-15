@@ -25,7 +25,7 @@
     <SchadeForm v-if="editingSchade"/>
     <OnderhoudForm v-if="editingOnderhoud"/>
     <InstallatieForm v-if="editingInstallatie"/>
-    <ModificatieForm v-if="editingSchade"/>
+    <ModificatieForm v-if="editingModificatie"/>
     
 </template>
 

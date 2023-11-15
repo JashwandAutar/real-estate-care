@@ -6,6 +6,7 @@
 
     const installatieLocatie = ref();
     const gemeldeStoringenInstallatie = ref();
+
     const selectedInstallatie = ref();
     const installatie = ref([
         { name: 'Koeling' },
@@ -32,13 +33,15 @@
             <InputText id="locatie" v-model="installatieLocatie" />
             <label for="locatie">Locatie</label>
         </span>
+        <br>
         <Dropdown v-model="selectedInstallatie" :options="installatie" optionLabel="name" placeholder="Kies Installatie Soort" class="w-full md:w-14rem" />
         <br>
         <Textarea v-model="gemeldeStoringenInstallatie" rows="5" cols="30" placeholder="Gemelde Storingen" />
         <br>
         <Button label="Testprocedure" :href="'/path/to/your/pdf-file.pdf'" target="_blank" />
         <br>
-        <Textarea v-model="opmerkingenModificatie" rows="5" cols="30" placeholder="Opmerkingen" />
+        <Textarea v-model="opmerkingenInstallatie" rows="5" cols="30" placeholder="Opmerkingen" />
+        <br>
         <Button label="Verzend" @click="showInstallatieRapport()" />
         <br>
     </form>

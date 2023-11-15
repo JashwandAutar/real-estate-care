@@ -26,7 +26,7 @@
         toast.add({ 
             severity: 'Succes', 
             summary: 'Schade Rapport', 
-            detail: 'Onderhoud Locatie: ' + onderhoudLocatie.value , 
+            detail: 'Onderhoud Locatie: ' + onderhoudLocatie.value + "Type onderhoud: " + selectedOnderhoud.value.name + "Acute actie vereist: " + onderhoudActie.value + "Kostenindicatie: " + selectedKosten.value.name, 
             life: 3000 
         });
     };

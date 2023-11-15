@@ -3,7 +3,7 @@
     import { useToast } from "primevue/usetoast";
 
     const toast = useToast();
-    
+
     const schadeLocatie = ref();
     const schadeNieuw = ref();
     const schadeActie = ref();
@@ -23,9 +23,10 @@
         toast.add({ 
             severity: 'Succes', 
             summary: 'Schade Rapport', 
-            detail: 'schadeLocatie: ' + schadeLocatie.value + 'Nieuwe schade: ' + schadeNieuw.value + 'Type schade: ' + selectedSchade.value + 'Datum: ' + date.value + 'Opmerkingen: ' + schadeOmschrijving.value, 
-            life: 3000 
+            detail: ' schadeLocatie: ' + schadeLocatie.value + ' Nieuwe schade: ' + schadeNieuw.value + ' Type schade: ' + selectedSchade.value.name + ' Datum: '  + date.value + " Acute actie vereist: " + schadeActie.value + ' Opmerkingen: ' + schadeOmschrijving.value, 
+            life: 6000 
         });
+
     };
 </script>
 <template>
@@ -40,14 +41,14 @@
         <Dropdown v-model="selectedSchade" :options="schade" optionLabel="name" placeholder="Kies Schade Soort" class="w-full md:w-14rem" />
         <br>
         <div class="flex align-items-center">
-            <RadioButton v-model="schadeNieuw" inputId="nieuwe-schade" name="nieuwe-schade" value="true" />
+            <RadioButton v-model="schadeNieuw" inputId="nieuwe-schade" name="nieuwe-schade" value="Nieuw" />
             <label for="nieuwe-schade" class="ml-2"> Nieuwe schade</label>
         </div>
         <br>
         <Calendar v-model="date" dateFormat="dd-mm-yy" showIcon showButtonBar/>
         <br>
         <div class="flex align-items-center">
-            <RadioButton v-model="schadeActie" inputId="acute-actie" name="acute-actie" value="vereist" />
+            <RadioButton v-model="schadeActie" inputId="acute-actie" name="acute-actie" value="Vereist" />
             <label for="acute-actie" class="ml-2"> Acute actie vereist</label>
         </div>
         <br>
