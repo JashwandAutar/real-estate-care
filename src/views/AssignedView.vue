@@ -1,6 +1,6 @@
 <script setup>
   import { ref } from 'vue';
-  
+  //import InspectionForm from '../components/InspectionForm.vue';
   import SchadeForm from '../components/SchadeForm.vue';
   import OnderhoudForm from '../components/OnderhoudForm.vue';
   import InstallatieForm from '../components/InstallatieForm.vue';

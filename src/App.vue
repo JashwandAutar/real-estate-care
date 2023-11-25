@@ -72,7 +72,6 @@
 
   main{
     /* background-image: linear-gradient(50deg, var(--teal) 58%, var(--black) 72%); */
-    padding: 8px;
     border-width: 5px;
     border-style: solid;
     border-color: var(--black) var(--black) var(--teal) var(--teal);
