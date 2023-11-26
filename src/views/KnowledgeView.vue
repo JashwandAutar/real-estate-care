@@ -1,8 +1,10 @@
 <script setup>
-  //import Icon from '../components/Icon.vue';
+  import PdfViewer from '../components/PdfViewer.vue';
 </script>
 <template>
     <h1>KennisBase/Documentatie</h1>
+
+    <PdfViewer/>
 </template>
 
 <style scoped>
