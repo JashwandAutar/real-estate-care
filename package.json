@@ -11,7 +11,7 @@
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.3.67",
     "pdfvuer": "^2.0.1",
-    "primevue": "^3.38.1",
+    "primevue": "^3.41.1",
     "pspdfkit": "^2023.5.2",
     "vue": "^3.3.4",
     "vue-pdf": "^4.3.0",

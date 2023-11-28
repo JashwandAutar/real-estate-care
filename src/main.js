@@ -22,6 +22,8 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';                   // optional
+import Password from 'primevue/password';
+import Avatar from 'primevue/avatar';
 
 
 
@@ -46,4 +48,7 @@ app.component('DataTable', DataTable);
 app.component('Column', Column);
 app.component('ColumnGroup', ColumnGroup);
 app.component('Row', Row);
+app.component('Password', Password);
+app.component('Avatar', Avatar);
+
 app.mount('#app');
