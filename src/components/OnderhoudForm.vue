@@ -30,6 +30,10 @@
             life: 3000 
         });
     };
+
+    const onUpload = () => {
+        toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
+    };
 </script>
 <template>
     <form>   
@@ -48,6 +52,8 @@
         </div>
         <br>
         <Dropdown v-model="selectedKosten" :options="kosten" optionLabel="name" placeholder="KostenIndicatie" class="w-full md:w-14rem" />
+        <br>
+        <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" :maxFileSize="1000000" @upload="onUpload" :multiple="true" chooseLabel="Foto's voor deze Rapport" />
         <br>
         <Button label="Verzend" @click="showOnderhoudRapport()" />
         <br>

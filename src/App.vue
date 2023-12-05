@@ -16,13 +16,22 @@
   <header>
     
     <img alt="Vue logo" class="logo" src="./assets/logo REC.png"  />
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/assigned"><svg-icon type="mdi" :path="icons.path.value" /><span>Toegewezen Rap.</span></RouterLink>
-      <RouterLink to="/performed"><svg-icon type="mdi" :path="icons.path1.value" /><span>Uitgevoerde Rap.</span></RouterLink>
-      <RouterLink to="/knowledge"><svg-icon type="mdi" :path="icons.path2.value" /><span>KennisBase</span></RouterLink>
-      <RouterLink to="/settings"><svg-icon type="mdi" :path="icons.path3.value" /><span>Instellingen</span></RouterLink>
-    </nav>
+    <Toolbar style="border-radius: 3rem; background-image: linear-gradient(to right, var(--teal), var(--black))">
+      <template #start>
+        <nav>
+          <RouterLink to="/assigned"><svg-icon type="mdi" :path="icons.path.value" /><span>Toegewezen Rap.</span></RouterLink>
+          <RouterLink to="/performed"><svg-icon type="mdi" :path="icons.path1.value" /><span>Uitgevoerde Rap.</span></RouterLink>
+          <RouterLink to="/knowledge"><svg-icon type="mdi" :path="icons.path2.value" /><span>KennisBase</span></RouterLink>
+          <RouterLink to="/settings"><svg-icon type="mdi" :path="icons.path3.value" /><span>Instellingen</span></RouterLink>
+        </nav>
+        
+      </template>
+
+      <template #end> 
+        <Avatar image="./assets/account-template.png" class="mr-2" size="large" shape="circle" />
+        <span class="username">Jazz Autar</span>
+      </template>
+    </Toolbar>
     
   
   </header>
@@ -57,19 +66,28 @@
 
   }
   nav a{
+    padding: 0 5px 0 5px;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.5rem;
-    color: var(--black);
+    color: white;
     transition: color 0.25s;
     display: flex;
     align-items: center;
   }
   nav a:hover{
     text-decoration: none;
-    color: var(--teal);
+    color: var(--black);
   }
 
+  .p-toolbar {
+    width: 100%;
+  }
+  .username{
+    color: white;
+    font-weight: bold;
+    padding-left: 5px;
+  }
   main{
     /* background-image: linear-gradient(50deg, var(--teal) 58%, var(--black) 72%); */
     padding: 8px;

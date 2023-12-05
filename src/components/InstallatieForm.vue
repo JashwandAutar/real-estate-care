@@ -6,7 +6,7 @@
 
     const installatieLocatie = ref();
     const gemeldeStoringenInstallatie = ref();
-
+    const opmerkingenInstallatie = ref();
     const selectedInstallatie = ref();
     const installatie = ref([
         { name: 'Koeling' },
@@ -24,6 +24,9 @@
             life: 3000 
         });
     };
+    const onUpload = () => {
+        toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
+    };
 </script>
 <template>
     <form>  
@@ -38,9 +41,11 @@
         <br>
         <Textarea v-model="gemeldeStoringenInstallatie" rows="5" cols="30" placeholder="Gemelde Storingen" />
         <br>
-        <Button label="Testprocedure" :href="'/path/to/your/pdf-file.pdf'" target="_blank" />
+        <a href="/public/files/WEB_handboek-RVB-BOEI-Deel1.pdf" target="_blank" rel="noopener noreferrer" class="p-button font-bold">Testprocedure</a>
         <br>
         <Textarea v-model="opmerkingenInstallatie" rows="5" cols="30" placeholder="Opmerkingen" />
+        <br>
+        <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" :maxFileSize="1000000" @upload="onUpload" :multiple="true" chooseLabel="Foto's voor deze Rapport" />
         <br>
         <Button label="Verzend" @click="showInstallatieRapport()" />
         <br>

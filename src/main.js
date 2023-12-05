@@ -24,8 +24,7 @@ import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';                   // optional
 import Password from 'primevue/password';
 import Avatar from 'primevue/avatar';
-
-
+import Toolbar from 'primevue/toolbar';
 
 const app = createApp(App);
 
@@ -50,5 +49,5 @@ app.component('ColumnGroup', ColumnGroup);
 app.component('Row', Row);
 app.component('Password', Password);
 app.component('Avatar', Avatar);
-
+app.component('Toolbar', Toolbar);
 app.mount('#app');

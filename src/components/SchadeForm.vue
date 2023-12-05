@@ -26,7 +26,10 @@
             detail: ' schadeLocatie: ' + schadeLocatie.value + ' Nieuwe schade: ' + schadeNieuw.value + ' Type schade: ' + selectedSchade.value.name + ' Datum: '  + date.value + " Acute actie vereist: " + schadeActie.value + ' Opmerkingen: ' + schadeOmschrijving.value, 
             life: 6000 
         });
-
+    };
+    
+    const onUpload = () => {
+        toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
     };
 </script>
 <template>
@@ -53,6 +56,8 @@
         </div>
         <br>
         <Textarea v-model="schadeOmschrijving" rows="5" cols="30" />
+        <br>
+        <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" :maxFileSize="1000000" @upload="onUpload" :multiple="true" chooseLabel="Foto's voor deze Rapport" />
         <br>
         <Button label="Verzend" @click="showSchadeRapport()" />
         <br>
