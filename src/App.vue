@@ -3,13 +3,15 @@
   import { ref } from 'vue';
   import SvgIcon from '@jamescoyle/vue-icon';
   import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiCog } from '@mdi/js';
-
+  
   const icons = {
     path: ref(mdiCheckboxBlankBadge),
     path1: ref(mdiFormatListBulletedType),
     path2: ref(mdiFileDocument),
     path3: ref(mdiCog)
   };
+  const name = ref("Jazz Autar");
+  const image = ref("/src/assets/account-template.png");
 </script>
 
 <template>
@@ -28,8 +30,8 @@
       </template>
 
       <template #end> 
-        <Avatar image="./assets/account-template.png" class="mr-2" size="large" shape="circle" />
-        <span class="username">Jazz Autar</span>
+        <Avatar :image=image :size="large" :shape="circle" />
+        <span class="username">{{ name }}</span>
       </template>
     </Toolbar>
     
