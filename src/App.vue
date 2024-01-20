@@ -30,7 +30,7 @@
       </template>
 
       <template #end> 
-        <Avatar :image=image :size="large" :shape="circle" />
+        <Avatar :image=image size="xlarge" shape="circle" />
         <span class="username">{{ name }}</span>
       </template>
     </Toolbar>
