@@ -1,37 +1,53 @@
 <script setup>
   import { ref } from 'vue';
-
+  import { RouterLink } from 'vue-router';
   import SchadeTable from "../components/SchadeTable.vue"; 
   import OnderhoudTable from "../components/OnderhoudTable.vue"; 
   import InstallatieTable from "../components/InstallatieTable.vue"; 
   import ModificatieTable from "../components/ModificatieTable.vue"; 
+  import SvgIcon from '@jamescoyle/vue-icon';
+  import { mdiArrowLeftThick } from '@mdi/js';
 
-  const editingSchade = ref(false);
-  const editingOnderhoud = ref(false);
-  const editingInstallatie = ref(false);
-  const editingModificatie = ref(false);
+  const backToHome = ref(mdiArrowLeftThick);
 </script>
 <template>
-    <h1>Uitgevoerde Rapportages</h1>
-    <div class="toggle-buttons">
-        <ToggleButton v-model="editingSchade" onLabel="Schade" offLabel="Schade"/>
-        <ToggleButton v-model="editingOnderhoud" onLabel="Achterstallig Onderhoud" offLabel=" Achterstallig Onderhoud" />
-        <ToggleButton v-model="editingInstallatie" onLabel="Technische installaties" offLabel="Technische installaties" />
-        <ToggleButton v-model="editingModificatie" onLabel="Modificaties inventariseren" offLabel="Modificaties inventariseren" />
-    </div>
-    <SchadeTable v-if="editingSchade"/>
-    <br>
-    <OnderhoudTable v-if="editingOnderhoud"/>
-    <br>
-    <InstallatieTable v-if="editingInstallatie"/>
-    <br>
-    <ModificatieTable v-if="editingModificatie"/>
+    <h1><RouterLink to="/"><svg-icon type="mdi" :path="backToHome" /></RouterLink> Uitgevoerde Rapportages</h1>
+    
+    <TabView>
+      <TabPanel header="Schade">
+        <SchadeTable/>
+      </TabPanel>
+      <TabPanel header="Achterstallig Onderhoud">
+        <OnderhoudTable/>
+      </TabPanel>
+      <TabPanel header="Technische installaties">
+        <InstallatieTable/>
+      </TabPanel>
+      <TabPanel header="Modificaties inventariseren">
+        <ModificatieTable/>
+      </TabPanel>
+    </TabView>
 </template>
 
 <style scoped>
-  .toggle-buttons{
-    margin: auto 0 12px;
+h1{
     display: flex;
-    justify-content: space-evenly;
-    }
+    flex-direction: row;
+    align-items: center;
+  }
+  a{
+    color: var(--teal);
+    transition: color 0.5s;
+    width: 60px;
+    height: 68px;
+    margin-inline-end: 10px;
+  }
+  a:hover{
+    color: var(--black);
+    transition: color 0.5s;
+  }
+  svg{
+    width: 70px;
+    height: 70px;
+  }
 </style>

@@ -1,32 +1,33 @@
 <script setup>
   import { ref } from 'vue';
-  
-  import SchadeForm from '../components/SchadeForm.vue';
+  import { RouterLink } from 'vue-router';
+  import SvgIcon from '@jamescoyle/vue-icon';
+  import { mdiArrowLeftThick } from '@mdi/js';
+  import SchadeForm from "../components/SchadeForm.vue";
   import OnderhoudForm from '../components/OnderhoudForm.vue';
   import InstallatieForm from '../components/InstallatieForm.vue';
   import ModificatieForm from '../components/ModificatieForm.vue';
 
-  const editingSchade = ref(false);
-  const editingOnderhoud = ref(false);
-  const editingInstallatie = ref(false);
-  const editingModificatie = ref(false);
-
+  const backToHome = ref(mdiArrowLeftThick);
 </script>
 
 <template>
-    <h1>Toegewezen Rapportages</h1>
-    <div class="toggle-buttons">
-        <ToggleButton v-model="editingSchade" onLabel="Schade" offLabel="Schade"/>
-        <ToggleButton v-model="editingOnderhoud" onLabel="Achterstallig Onderhoud" offLabel=" Achterstallig Onderhoud" />
-        <ToggleButton v-model="editingInstallatie" onLabel="Technische installaties" offLabel="Technische installaties" />
-        <ToggleButton v-model="editingModificatie" onLabel="Modificaties inventariseren" offLabel="Modificaties inventariseren" />
-    </div>
-
-    <SchadeForm v-if="editingSchade"/>
-    <OnderhoudForm v-if="editingOnderhoud"/>
-    <InstallatieForm v-if="editingInstallatie"/>
-    <ModificatieForm v-if="editingModificatie"/>
-    
+  <h1><RouterLink to="/"><svg-icon type="mdi" :path="backToHome" /></RouterLink> Toegewezen Rapportages</h1>
+  <TabView>
+    <TabPanel header="Schade">
+      <SchadeForm />
+    </TabPanel>
+    <TabPanel header="Achterstallig Onderhoud">
+      <OnderhoudForm/>
+    </TabPanel>
+    <TabPanel header="Technische installaties">
+      <InstallatieForm/>
+    </TabPanel>
+    <TabPanel header="Modificaties inventariseren">
+      <ModificatieForm/>
+    </TabPanel>
+  </TabView>
+ 
 </template>
 
 <style scoped>
@@ -34,7 +35,8 @@
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 80%;
+    max-width: 1000px;
+    min-width: 400px;
     border: 3px solid rgba(0,170,162);
     background-color: rgba(41, 52, 57, 0.201);
     display: flex;
@@ -42,10 +44,24 @@
     flex-wrap: wrap;
     align-content: center;
   }
-
-  .toggle-buttons{
-    margin: auto 0 12px;
+  h1{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+  }
+  a{
+    color: var(--teal);
+    transition: color 0.5s;
+    width: 60px;
+    height: 68px;
+    margin-inline-end: 10px;
+  }
+  a:hover{
+    color: var(--black);
+    transition: color 0.5s;
+  }
+  svg{
+    width: 70px;
+    height: 70px;
   }
 </style>

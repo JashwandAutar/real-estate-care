@@ -2,13 +2,14 @@
   import { RouterLink, RouterView } from 'vue-router'
   import { ref } from 'vue';
   import SvgIcon from '@jamescoyle/vue-icon';
-  import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiCog } from '@mdi/js';
+  import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiCog, mdiSearchWeb } from '@mdi/js';
   
   const icons = {
-    path: ref(mdiCheckboxBlankBadge),
-    path1: ref(mdiFormatListBulletedType),
-    path2: ref(mdiFileDocument),
-    path3: ref(mdiCog)
+    check: ref(mdiCheckboxBlankBadge),
+    list: ref(mdiFormatListBulletedType),
+    fileDocument: ref(mdiFileDocument),
+    cog: ref(mdiCog),
+    searchWeb: ref(mdiSearchWeb)
   };
   const name = ref("Jazz Autar");
   const image = ref("/src/assets/account-template.png");
@@ -16,48 +17,45 @@
 
 <template>
   <header>
-    
-    <img alt="Vue logo" class="logo" src="./assets/logo REC.png"  />
-    <Toolbar style="border-radius: 3rem; background-image: linear-gradient(to right, var(--teal), var(--black))">
+    <Toolbar style="background-color: var(--black);">
       <template #start>
-        <nav>
-          <RouterLink to="/assigned"><svg-icon type="mdi" :path="icons.path.value" /><span>Toegewezen Rap.</span></RouterLink>
-          <RouterLink to="/performed"><svg-icon type="mdi" :path="icons.path1.value" /><span>Uitgevoerde Rap.</span></RouterLink>
-          <RouterLink to="/knowledge"><svg-icon type="mdi" :path="icons.path2.value" /><span>KennisBase</span></RouterLink>
-          <RouterLink to="/settings"><svg-icon type="mdi" :path="icons.path3.value" /><span>Instellingen</span></RouterLink>
-        </nav>
-        
+        <img alt="real-estate-care-logo" class="logo" src="./assets/logo.png"/>
       </template>
-
+      
       <template #end> 
         <Avatar :image=image size="xlarge" shape="circle" />
         <span class="username">{{ name }}</span>
       </template>
     </Toolbar>
-    
-  
   </header>
 
   <main>
     <RouterView />
   </main>
+  <footer>
+    <nav>
+      <RouterLink to="/assigned"><svg-icon type="mdi" :path="icons.check.value" /><span>Toegewezen Rap.</span></RouterLink>
+      <RouterLink to="/settings"><svg-icon type="mdi" :path="icons.searchWeb.value" /><span>Zoeken</span></RouterLink>
+      <RouterLink to="/knowledge"><svg-icon type="mdi" :path="icons.fileDocument.value" /><span>KennisBase</span></RouterLink>
+    </nav>
+  </footer>
 </template>
 
 <style scoped>
   
   .logo{
-    width: 15rem;
+    width: 14rem;
   }
 
   header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--teal) var(--teal) var(--black) var(--black)
+    border-top: 5px solid var(--teal);
+    border-left: 5px solid var(--black);
+    border-right: 5px solid var(--black);
   }
-
+  
   nav{
     width: 100%;
     padding-top: 8px;
@@ -75,13 +73,17 @@
     color: white;
     transition: color 0.25s;
     display: flex;
+    flex-direction: column;
     align-items: center;
   }
   nav a:hover{
     text-decoration: none;
     color: var(--black);
   }
-
+  svg{
+    width: 40px;
+    height: 40px;
+  }
   .p-toolbar {
     width: 100%;
   }
@@ -93,8 +95,12 @@
   main{
     /* background-image: linear-gradient(50deg, var(--teal) 58%, var(--black) 72%); */
     padding: 8px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--black) var(--black) var(--teal) var(--teal);
+    
+    border-left: 5px solid var(--black);
+    border-right: 5px solid var(--black);
+  }
+  footer{
+    background-color: var(--teal);
+    border-bottom: 5px solid var(--teal);
   }
 </style>

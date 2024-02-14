@@ -25,6 +25,9 @@ import Row from 'primevue/row';                   // optional
 import Password from 'primevue/password';
 import Avatar from 'primevue/avatar';
 import Toolbar from 'primevue/toolbar';
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
+
 
 const app = createApp(App);
 
@@ -50,4 +53,6 @@ app.component('Row', Row);
 app.component('Password', Password);
 app.component('Avatar', Avatar);
 app.component('Toolbar', Toolbar);
+app.component('TabView', TabView);
+app.component('TabPanel', TabPanel);
 app.mount('#app');
