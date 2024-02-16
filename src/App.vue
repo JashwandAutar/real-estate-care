@@ -103,4 +103,14 @@
     background-color: var(--teal);
     border-bottom: 5px solid var(--teal);
   }
+
+  @media(max-width: 500px){
+    nav a{
+      font-size: 1rem;
+    }
+    svg{
+      width: 30px;
+      height: 30px;
+    }
+  }
 </style>

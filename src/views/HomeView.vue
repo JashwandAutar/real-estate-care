@@ -85,7 +85,7 @@ import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiC
     background-color: var(--black);
   }
   .flex-item span{
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .flex-item span:hover{
     color: var(--teal);
@@ -99,7 +99,16 @@ import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiC
     padding-block-end: 8px;
   }
   svg{
-    width: 200px;
-    height: 200px;
+    width: 10rem;
+    height: 10rem;
+  }
+  @media(max-width: 500px){
+    .flex-item span{
+      font-size: 1.1rem;
+    }
+    svg{
+      width: 7rem;
+      height: 7rem;
+    }
   }
 </style>

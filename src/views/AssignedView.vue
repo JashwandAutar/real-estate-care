@@ -36,7 +36,6 @@
     margin-top: 10px;
     margin-bottom: 10px;
     max-width: 1000px;
-    min-width: 400px;
     border: 3px solid rgba(0,170,162);
     background-color: rgba(41, 52, 57, 0.201);
     display: flex;
@@ -48,6 +47,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-size: 1.5rem;
   }
   a{
     color: var(--teal);
@@ -63,5 +63,12 @@
   svg{
     width: 70px;
     height: 70px;
+  }
+  @media(max-width: 500px){
+    form{
+      border: 0px solid rgba(0,170,162);
+      background-color: rgba(41, 52, 57, 0);
+      flex-wrap: nowrap;
+    }
   }
 </style>
