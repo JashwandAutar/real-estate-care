@@ -48,6 +48,38 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/SettingsView.vue')
+    },
+    {
+      path: '/damagedetail/:id',
+      name: 'damagedetail',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/detail/DetailDamageView.vue')
+    },
+    {
+      path: '/installationdetail/:id',
+      name: 'installationdetail',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/detail/DetailInstallationView.vue')
+    },
+    {
+      path: '/maintanencedetail/:id',
+      name: 'maintanencedetail',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/detail/DetailMaintanenceView.vue')
+    },
+    {
+      path: '/modificationdetail/:id',
+      name: 'modificationdetail',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/detail/DetailModificationView.vue')
     }
   ]
 })

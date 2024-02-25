@@ -10,10 +10,12 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.3.67",
+    "axios": "^1.6.7",
     "pdfvuer": "^2.0.1",
     "primevue": "^3.41.1",
     "pspdfkit": "^2023.5.2",
     "vue": "^3.3.4",
+    "vue-axios": "^3.5.2",
     "vue-pdf": "^4.3.0",
     "vue-router": "^4.2.5"
   },

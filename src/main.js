@@ -27,6 +27,7 @@ import Avatar from 'primevue/avatar';
 import Toolbar from 'primevue/toolbar';
 import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
+import Card from 'primevue/card';
 
 
 const app = createApp(App);
@@ -55,4 +56,5 @@ app.component('Avatar', Avatar);
 app.component('Toolbar', Toolbar);
 app.component('TabView', TabView);
 app.component('TabPanel', TabPanel);
+app.component('Card', Card);
 app.mount('#app');

@@ -1,0 +1,51 @@
+{
+    "damages":[
+        {
+            "id": 1,
+            "location": "Den Haag",
+            "newDamage": "Nieuw",
+            "typeOfDamage": "geweld",
+            "date": "2024-01-20",
+            "acuteActionRequired": "Vereist",
+            "description": "Muur ingeslagen en waterleiding lekt"
+        },
+        {
+            "id": 2,
+            "location": "Den Haag",
+            "newDamage": "geweld",
+            "typeOfDamage": "Calamiteit",
+            "date": "2024-01-22",
+            "acuteActionRequired": "Vereist",
+            "description": "Grote stuk voerplint afgeschuurt"
+        }
+    ],
+    "outstanding-maintenance":[
+        {
+            "id": 1,
+            "location": "Zoetemeer",
+            "typeOfMaintenance": "elektra",
+            "acuteActionRequired": "Vereist",
+            "costEstimate": "0-500"
+        }
+    ],
+    "technical-installations":[
+        {
+            "id": 1,
+            "location": "Rotterdam",
+            "typeOfInstallation": "Verwarming",
+            "reportedMalfunctions": "Radiators geven bijna geen verwarming.",
+            "approved": "Goedgekeurd",
+            "comments": "Radiators zijn verroest voor wel 5 jaar"
+        }
+    ],
+    "modifications":[
+        {
+            "id": 1,
+            "location": "Den Haag",
+            "executedBy": "Huurder",
+            "description": "De huurder wilt een schuur maken naast de huis",
+            "actionToBeTaken": "Accepteren",
+            "comments": "Het is een kleine schuur"
+        }
+    ]
+}

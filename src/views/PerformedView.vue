@@ -1,6 +1,7 @@
 <script setup>
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   import { RouterLink } from 'vue-router';
+  
   import SchadeTable from "../components/SchadeTable.vue"; 
   import OnderhoudTable from "../components/OnderhoudTable.vue"; 
   import InstallatieTable from "../components/InstallatieTable.vue"; 
@@ -9,6 +10,7 @@
   import { mdiArrowLeftThick } from '@mdi/js';
 
   const backToHome = ref(mdiArrowLeftThick);
+  
 </script>
 <template>
     <h1><RouterLink to="/"><svg-icon type="mdi" :path="backToHome" /></RouterLink> Uitgevoerde Rapportages</h1>
