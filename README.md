@@ -6,9 +6,14 @@ Demo-applicatie voor het maken van rapportages
 npm install
 ```
 
-## JSON-Server start
+## JSON-Server 
+### start
 ```sh
 json-server --watch src/assets/rapports.json
+```
+### shutdown
+```sh
+ctrl+c
 ```
 
 ## Run application
