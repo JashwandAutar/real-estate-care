@@ -3,10 +3,10 @@
   import { RouterLink } from 'vue-router';
   import SvgIcon from '@jamescoyle/vue-icon';
   import { mdiArrowLeftThick } from '@mdi/js';
-  import SchadeForm from "../components/SchadeForm.vue";
-  import OnderhoudForm from '../components/OnderhoudForm.vue';
-  import InstallatieForm from '../components/InstallatieForm.vue';
-  import ModificatieForm from '../components/ModificatieForm.vue';
+  import SchadeForm from "../components/forms/SchadeForm.vue";
+  import OnderhoudForm from '../components/forms/OnderhoudForm.vue';
+  import InstallatieForm from '../components/forms/InstallatieForm.vue';
+  import ModificatieForm from '../components/forms/ModificatieForm.vue';
 
   const backToHome = ref(mdiArrowLeftThick);
 </script>

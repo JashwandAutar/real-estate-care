@@ -2,10 +2,10 @@
   import { ref, onMounted } from 'vue';
   import { RouterLink } from 'vue-router';
   
-  import SchadeTable from "../components/SchadeTable.vue"; 
-  import OnderhoudTable from "../components/OnderhoudTable.vue"; 
-  import InstallatieTable from "../components/InstallatieTable.vue"; 
-  import ModificatieTable from "../components/ModificatieTable.vue"; 
+  import SchadeTable from "../components/lists/SchadeTable.vue"; 
+  import OnderhoudTable from "../components/lists/OnderhoudTable.vue"; 
+  import InstallatieTable from "../components/lists/InstallatieTable.vue"; 
+  import ModificatieTable from "../components/lists/ModificatieTable.vue"; 
   import SvgIcon from '@jamescoyle/vue-icon';
   import { mdiArrowLeftThick } from '@mdi/js';
 

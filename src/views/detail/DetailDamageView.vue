@@ -26,7 +26,6 @@
             damages.location = response.data.location;
             damages.newDamage = response.data.newDamage;
             damages.typeOfDamage = response.data.typeOfDamage;
-            damages.soortSchade = response.data.soortSchade;
             damages.date = response.data.date;
             damages.acuteActionRequired = response.data.acuteActionRequired;
             damages.description = response.data.description;
@@ -45,9 +44,10 @@
         <h2>{{ damages.date }} | {{ damages.location }}</h2>
         <hr>
         <p>Schade: <span class="bold">{{ damages.newDamage }}</span></p>
-        <p>Type: <span class="bold">{{ damages.typeOfDamage }}</span></p>
+        <p>Type: <span class="bold">{{ damages.typeOfDamage.name }}</span></p>
         <p>Acute Actie: <span class="bold">{{ damages.acuteActionRequired }}</span></p>
         <p><span class="descriptions">{{ damages.description }}</span></p>
+        <RouterLink :to="`/editdamage/${damages.id}`">EDIT</RouterLink>
     </div>
 </template>
 

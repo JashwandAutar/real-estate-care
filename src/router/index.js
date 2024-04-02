@@ -10,14 +10,6 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    },
-    {
       path: '/assigned',
       name: 'assigned',
       // route level code-splitting
@@ -80,7 +72,39 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/detail/DetailModificationView.vue')
-    }
+    },
+    {
+      path: '/editdamage/:id',
+      name: 'editdamage',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/edits/DamageEdit.vue')
+    },
+    {
+      path: '/editinstallation/:id',
+      name: 'editinstallation',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/edits/InstallationEdit.vue')
+    },
+    {
+      path: '/editmaintenance/:id',
+      name: 'editmaintenance',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/edits/MaintenanceEdit.vue')
+    },
+    {
+      path: '/editmodification/:id',
+      name: 'editmodification/',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/edits/ModificationEdit.vue')
+    },
   ]
 })
 

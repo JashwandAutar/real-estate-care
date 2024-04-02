@@ -3,6 +3,7 @@
     import axios from 'axios';
     import { RouterLink } from 'vue-router';
     
+
     let damages = ref([]);
     onMounted(() => {
         console.log("Mounted");
@@ -21,7 +22,7 @@
             <Card>
                 <template #title>{{ damage.date }} , {{ damage.location }}</template>
                 <template #content>
-                    <p>{{ damage.typeOfDamage }}</p>
+                    <p>{{ damage.typeOfDamage.name }}</p>
                 </template>
             </Card>
         </RouterLink>

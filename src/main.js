@@ -5,6 +5,7 @@ import 'primevue/resources/primevue.min.css';
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
+import {createPinia} from 'pinia';
 import Primevue from 'primevue/config';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
@@ -34,6 +35,7 @@ const app = createApp(App);
 
 app.use(router);
 app.use(Primevue);
+app.use(createPinia());
 app.use(ToastService);
 
 app.component('SelectButton', SelectButton);

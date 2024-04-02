@@ -1,6 +1,13 @@
 <script setup>
     import { ref } from 'vue';
     import { useToast } from "primevue/usetoast";
+    import {useModificationRapportStore} from '../../components/stores/modificationRapport';
+    import { useRoute } from 'vue-router';
+    
+    const route = useRoute();
+
+    const storeModificationRapport = useModificationRapportStore();
+    storeModificationRapport.fetchDamageRapport(route.params.id);
 
     const toast = useToast();
 
@@ -30,6 +37,7 @@
             detail: 'ModificatieLocatie: ' + modificatieLocatie.value + ' Uitgevoerd door: ' + selectedModificatieUitgevoerd.value.name + 'Beschrijving: ' + beschrijvingModificatie.value + ' Actie ondernomen: ' + selectedModificatieActie.value.name + ' Opmerkingen: ' + opmerkingenModificatie.value, 
             life: 3000 
         });
+        storeModificationRapport.editAndSave(route.params.id, storeModificationRapport.modifications);
     };
 
     const onUpload = () => {
@@ -43,17 +51,17 @@
         <a href="/public/files/WEB_handboek-RVB-BOEI-Deel1.pdf" target="_blank" rel="noopener noreferrer" class="p-button font-bold">Bestaande situatie en gedocumenteerde modificaties</a>
         <br>
         <span class="p-float-label">
-            <InputText id="locatie" v-model="modificatieLocatie" />
+            <InputText id="locatie" v-model="storeModificationRapport.modifications.location" />
             <label for="locatie">Locatie</label>
         </span>
         <br>
-        <Dropdown v-model="selectedModificatieUitgevoerd" :options="modificatieUitgevoerd" optionLabel="name" placeholder="Uitgevoerd door: " class="w-full md:w-14rem" />
+        <Dropdown v-model="storeModificationRapport.modifications.executedBy" :options="modificatieUitgevoerd" optionLabel="name" placeholder="Uitgevoerd door: " class="w-full md:w-14rem" />
         <br>
-        <Textarea v-model="beschrijvingModificatie" rows="5" cols="30" placeholder="Beschrijving modificatie" />
+        <Textarea v-model="storeModificationRapport.modifications.description" rows="5" cols="30" placeholder="Beschrijving modificatie" />
         <br>
-        <Dropdown v-model="selectedModificatieActie" :options="modificatieActie" optionLabel="name" placeholder="Te ondernemen actie" class="w-full md:w-14rem" />
+        <Dropdown v-model="storeModificationRapport.modifications.actionToBeTaken" :options="modificatieActie" optionLabel="name" placeholder="Te ondernemen actie" class="w-full md:w-14rem" />
         <br>
-        <Textarea v-model="opmerkingenModificatie" rows="5" cols="30" placeholder="Opmerkingen" />
+        <Textarea v-model="storeModificationRapport.modifications.comments" rows="5" cols="30" placeholder="Opmerkingen" />
         <br>
         <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" :maxFileSize="1000000" @upload="onUpload" :multiple="true" chooseLabel="Foto's voor deze Rapport" />
         <br>
