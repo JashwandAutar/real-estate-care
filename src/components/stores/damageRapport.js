@@ -1,6 +1,5 @@
 import { defineStore } from "pinia"; 
 import axios from 'axios';
-let damageRapports = [];
 
 
 export const useDamageRapportStore = defineStore({
@@ -27,9 +26,20 @@ export const useDamageRapportStore = defineStore({
 
         async postNewRapport(newItem){
             try{
-                const data = await axios.get(`http://localhost:3000/damages/`);
+                const makeID = (stringSize) => {
+                    let result = '';
+                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    let counter = 0;
+                    while (counter < stringSize) {
+                        result += characters.charAt(Math.floor(Math.random() * characters.length));
+                        counter += 1;
+                    }
+                    return result;
+                }
+                
+
                 const post = await axios.post('http://localhost:3000/damages/',{
-                    id: String(data.data.length + 1),
+                    id: makeID(6),
                     location: newItem.location,
                     newDamage: newItem.newDamage,
                     typeOfDamage: newItem.typeOfDamage,
@@ -46,9 +56,8 @@ export const useDamageRapportStore = defineStore({
         },
         async deleteRapport(itemId){
             try {
-                const data = await axios.delete(`http://localhost:3000/damages/`)
-                
-                
+                await axios.delete(`http://localhost:3000/damages/${itemId}`);
+
               } catch (error) {
                 console.error('Error deleting item:', error);
                 
@@ -56,8 +65,8 @@ export const useDamageRapportStore = defineStore({
         },
         async editAndSave(itemId, updatedData) {
             try {
-              const response = await axios.patch(`http://localhost:3000/damages/${itemId}`, updatedData);
-              return response.data; 
+                await axios.patch(`http://localhost:3000/damages/${itemId}`, updatedData);
+               
             } catch (error) {
               console.error('Error editing and saving item:', error);
               throw error;

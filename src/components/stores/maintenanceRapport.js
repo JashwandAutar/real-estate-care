@@ -27,10 +27,20 @@ export const useMaintenanceRapportStore = defineStore({
 
         async postNewRapport(newItem){
             try{
-                const data = await axios.get(`http://localhost:3000/outstanding-maintenance/`);
-                const post = await axios.post('http://localhost:3000/outstanding-maintenance/',{
-                    id: String(data.data.length + 1),
+                const makeID = (stringSize) => {
+                    let result = '';
+                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    let counter = 0;
+                    while (counter < stringSize) {
+                        result += characters.charAt(Math.floor(Math.random() * characters.length));
+                        counter += 1;
+                    }
+                    return result;
+                }
+                await axios.post('http://localhost:3000/outstanding-maintenance/',{
+                    id: makeID(6),
                     location: newItem.location,
+                    date: newItem.date,
                     typeOfMaintenance: newItem.typeOfMaintenance,
                     acuteActionRequired: newItem.acuteActionRequired,
                     costEstimate: newItem.costEstimate
@@ -43,8 +53,7 @@ export const useMaintenanceRapportStore = defineStore({
 
         async deleteRapport(itemId){
             try {
-                const data = await axios.delete(`http://localhost:3000/outstanding-maintenance/`)
-                await myStore.deleteItem(itemId);
+                await axios.delete(`http://localhost:3000/outstanding-maintenance/${itemId}`);
                 
               } catch (error) {
                 console.error('Error deleting item:', error);
@@ -54,8 +63,8 @@ export const useMaintenanceRapportStore = defineStore({
 
         async editAndSave(itemId, updatedData) {
             try {
-              const response = await axios.patch(`http://localhost:3000/outstanding-maintenance/${itemId}`, updatedData);
-              return response.data; 
+                await axios.patch(`http://localhost:3000/outstanding-maintenance/${itemId}`, updatedData);
+              
             } catch (error) {
               console.error('Error editing and saving item:', error);
               throw error;

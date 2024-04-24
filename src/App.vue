@@ -1,6 +1,7 @@
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router'
-  import { ref } from 'vue';
+  import { RouterLink, RouterView, useRouter } from 'vue-router'
+  import {onMounted, ref} from "vue";
+  import {getAuth, onAuthStateChanged, signOut} from "firebase/auth";
   import SvgIcon from '@jamescoyle/vue-icon';
   import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiCog, mdiSearchWeb } from '@mdi/js';
   
@@ -13,47 +14,89 @@
   };
   const name = ref("Jazz Autar");
   const image = ref("/src/assets/account-template.png");
+
+  const router = useRouter();
+  const currentUser = ref(null);
+  let auth;
+  onMounted(()=>{
+    auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if(user){
+        let index = user.email.indexOf("@");
+        let cutName = user.email.slice(0, index); 
+        currentUser.value = cutName;
+      }
+      else{
+        currentUser.value = null;
+      }
+      });
+    });
+    const handleSignOut = () => {
+        signOut(auth).then(() => {
+            router.push("/");
+        });
+    }
 </script>
 
 <template>
   <header>
     <Toolbar style="background-color: var(--black);">
       <template #start>
-        <img alt="real-estate-care-logo" class="logo" src="./assets/logo.png"/>
+        <img 
+          alt="real-estate-care-logo" 
+          class="logo" 
+          src="./assets/logo.png"
+        />
       </template>
-      
       <template #end> 
-        <Avatar :image=image size="xlarge" shape="circle" />
-        <span class="username">{{ name }}</span>
+        <div 
+          class="currentUser" 
+          v-if="currentUser"
+        >
+          <Avatar 
+            :image=image 
+            size="xlarge" 
+            shape="circle" 
+            alt="real-estate-care-user"
+          />
+          <span class="username">{{ currentUser }}</span>
+          <Button 
+            label="Log Out" 
+            @click="handleSignOut"
+          />
+        </div>
       </template>
     </Toolbar>
   </header>
-
   <main>
     <RouterView />
   </main>
   <footer>
     <nav>
       <RouterLink to="/assigned"><svg-icon type="mdi" :path="icons.check.value" /><span>Toegewezen Rap.</span></RouterLink>
-      <RouterLink to="/settings"><svg-icon type="mdi" :path="icons.searchWeb.value" /><span>Zoeken</span></RouterLink>
+      <RouterLink to="/performed"><svg-icon type="mdi" :path="icons.searchWeb.value" /><span>Zoeken</span></RouterLink>
       <RouterLink to="/knowledge"><svg-icon type="mdi" :path="icons.fileDocument.value" /><span>KennisBase</span></RouterLink>
     </nav>
   </footer>
 </template>
 
 <style scoped>
-  
   .logo{
     width: 14rem;
   }
 
   header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     border-top: 5px solid var(--teal);
     border-left: 5px solid var(--black);
     border-right: 5px solid var(--black);
+  }
+
+  .currentUser{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
   
   nav{
@@ -66,7 +109,10 @@
 
   }
   nav a{
-    padding: 0 5px 0 5px;
+    padding: 5px 5px 5px 5px;
+    border: 3px solid var(--black);
+    border-radius: 25px;
+    background-color: var(--black);
     text-decoration: none;
     font-weight: bold;
     font-size: 1.5rem;
@@ -78,7 +124,7 @@
   }
   nav a:hover{
     text-decoration: none;
-    color: var(--black);
+    color: var(--teal);
   }
   svg{
     width: 40px;
@@ -93,9 +139,9 @@
     padding-left: 5px;
   }
   main{
-    /* background-image: linear-gradient(50deg, var(--teal) 58%, var(--black) 72%); */
+    width: 100%;
+    min-height: 600px;
     padding: 8px;
-    
     border-left: 5px solid var(--black);
     border-right: 5px solid var(--black);
   }
@@ -103,10 +149,15 @@
     background-color: var(--teal);
     border-bottom: 5px solid var(--teal);
   }
-
-  @media(max-width: 500px){
+  :deep(.text-white){
+    color: rgba(41,52,57);
+  }
+  :deep(.text-white:hover){
+    color: rgb(255, 255, 255)
+  }
+  @media(max-width: 600px){
     nav a{
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
     svg{
       width: 30px;

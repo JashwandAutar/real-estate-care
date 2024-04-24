@@ -17,22 +17,40 @@
 <template>
     <form>
         <Toast />
-        <span class="p-float-label">
-            <InputText id="username" v-model="username" />
+        <FloatLabel>
+            <InputText 
+                id="username" 
+                v-model="username" 
+            />
             <label for="username">Gebruikersnaam</label>
-        </span>
+        </FloatLabel>>
         <br>
-        <span class="p-float-label">
-            <Password id="password" v-model="password" promptLabel="Stell uw wachtwoord in" weakLabel="Zwak" mediumLabel="Oké" strongLabel="Sterk" toggleMask/>
+        <FloatLabel>
+            <Password 
+                id="password" 
+                v-model="password" 
+                promptLabel="Stell uw wachtwoord in" 
+                weakLabel="Zwak" 
+                mediumLabel="Oké" 
+                strongLabel="Sterk" 
+                toggleMask
+            />
             <label for="password">Wachtwoord</label>
-        </span>
+        </FloatLabel>>
         <br>
-        <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" :maxFileSize="1000000" @upload="onUpload" :auto="true" chooseLabel="Nieuwe Avatar" />
+        <FileUpload 
+            mode="basic" 
+            name="demo[]" 
+            url="/api/upload" 
+            accept="image/*" 
+            :maxFileSize="1000000" 
+            @upload="onUpload" 
+            :auto="true" 
+            chooseLabel="Nieuwe Avatar" 
+        />
         <br>
         <Button label="Registreer" @click="updatedUser()" />
     </form>
-    
-    
 </template>
 <style scoped>
     form{

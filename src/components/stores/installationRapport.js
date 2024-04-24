@@ -25,10 +25,21 @@ export const useInstallationRapportStore = defineStore({
 
         async postNewRapport(newItem){
             try{
-                const data = await axios.get(`http://localhost:3000/technical-installations/`);
-                const post = await axios.post('http://localhost:3000/technical-installations/',{
-                    id: String(data.data.length + 1),
+                
+                const makeID = (stringSize) => {
+                    let result = '';
+                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    let counter = 0;
+                    while (counter < stringSize) {
+                        result += characters.charAt(Math.floor(Math.random() * characters.length));
+                        counter += 1;
+                    }
+                    return result;
+                }
+                await axios.post('http://localhost:3000/technical-installations/',{
+                    id: makeID(6),
                     location: newItem.location,
+                    date: newItem.date,
                     reportedMalfunctions: newItem.reportedMalfunctions,
                     typeOfInstallation: newItem.typeOfInstallation,
                     approved: newItem.approved,
@@ -42,8 +53,7 @@ export const useInstallationRapportStore = defineStore({
 
         async deleteRapport(itemId){
             try {
-                const data = await axios.delete(`http://localhost:3000/technical-installations/`)
-                await myStore.deleteItem(itemId);
+                await axios.delete(`http://localhost:3000/technical-installations/${itemId}`);
                 
               } catch (error) {
                 console.error('Error deleting item:', error);
@@ -52,8 +62,8 @@ export const useInstallationRapportStore = defineStore({
         },
         async editAndSave(itemId, updatedData) {
             try {
-              const response = await axios.patch(`http://localhost:3000/technical-installations/${itemId}`, updatedData);
-              return response.data; 
+              await axios.patch(`http://localhost:3000/technical-installations/${itemId}`, updatedData);
+              
             } catch (error) {
               console.error('Error editing and saving item:', error);
               throw error;

@@ -9,7 +9,7 @@ export const useModificationRapportStore = defineStore({
         loading: false
     }),
     actions: {
-        async fetchDamageRapports(itemId){
+        async fetchModificationRapport(itemId){
             try{
                 this.loading = true;
 
@@ -25,10 +25,21 @@ export const useModificationRapportStore = defineStore({
 
         async postNewRapport(newItem){
             try{
-                const data = await axios.get(`http://localhost:3000/modifications/`);
-                const post = await axios.post('http://localhost:3000/modifications/',{
-                    id: String(data.data.length + 1),
+                
+                const makeID = (stringSize) => {
+                    let result = '';
+                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    let counter = 0;
+                    while (counter < stringSize) {
+                        result += characters.charAt(Math.floor(Math.random() * characters.length));
+                        counter += 1;
+                    }
+                    return result;
+                }
+                await axios.post('http://localhost:3000/modifications/',{
+                    id: makeID(6),
                     location: newItem.location,
+                    date: newItem.date,
                     executedBy: newItem.executedBy,
                     actionToBeTaken: newItem.actionToBeTaken,
                     comments: newItem.comments,
@@ -42,8 +53,7 @@ export const useModificationRapportStore = defineStore({
 
         async deleteRapport(itemId){
             try {
-                const data = await axios.delete(`http://localhost:3000/damages/`)
-                await myStore.deleteItem(itemId);
+                await axios.delete(`http://localhost:3000/modifications/${itemId}`);
                 
               } catch (error) {
                 console.error('Error deleting item:', error);
@@ -53,8 +63,8 @@ export const useModificationRapportStore = defineStore({
         
         async editAndSave(itemId, updatedData) {
             try {
-              const response = await axios.patch(`http://localhost:3000/damages/${itemId}`, updatedData);
-              return response.data; 
+              await axios.patch(`http://localhost:3000/modifications/${itemId}`, updatedData);
+              
             } catch (error) {
               console.error('Error editing and saving item:', error);
               throw error;

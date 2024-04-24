@@ -3,28 +3,37 @@
   import { RouterLink } from 'vue-router';
   import SvgIcon from '@jamescoyle/vue-icon';
   import { mdiArrowLeftThick } from '@mdi/js';
-  import SchadeForm from "../components/forms/SchadeForm.vue";
-  import OnderhoudForm from '../components/forms/OnderhoudForm.vue';
-  import InstallatieForm from '../components/forms/InstallatieForm.vue';
-  import ModificatieForm from '../components/forms/ModificatieForm.vue';
+  import DamageForm from "../components/forms/DamageForm.vue";
+  import MaintenanceForm from '../components/forms/MaintenanceForm.vue';
+  import InstallationForm from '../components/forms/InstallationForm.vue';
+  import ModificationForm from '../components/forms/ModificationForm.vue';
 
   const backToHome = ref(mdiArrowLeftThick);
 </script>
 
 <template>
-  <h1><RouterLink to="/"><svg-icon type="mdi" :path="backToHome" /></RouterLink> Toegewezen Rapportages</h1>
+  <div class="page-title">
+    <RouterLink to="/feed">
+      <svg-icon 
+        type="mdi" 
+        :path="backToHome" 
+      />
+      <span>Ga Terug</span>
+    </RouterLink>
+    <h1>Toegewezen Rapportages</h1>
+  </div>
   <TabView>
     <TabPanel header="Schade">
-      <SchadeForm />
+      <DamageForm />
     </TabPanel>
     <TabPanel header="Achterstallig Onderhoud">
-      <OnderhoudForm/>
+      <MaintenanceForm/>
     </TabPanel>
     <TabPanel header="Technische installaties">
-      <InstallatieForm/>
+      <InstallationForm />
     </TabPanel>
     <TabPanel header="Modificaties inventariseren">
-      <ModificatieForm/>
+      <ModificationForm />
     </TabPanel>
   </TabView>
  
@@ -42,22 +51,36 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
+    padding: 5px;
   }
-  h1{
+  .page-title{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+  }
+  h1{
     font-size: 1.5rem;
   }
   a{
-    color: var(--teal);
+    color: var(--black);
     transition: color 0.5s;
-    width: 60px;
-    height: 68px;
     margin-inline-end: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  a span{
+    font-size: 1.5rem;
+    color: var(--black);
   }
   a:hover{
-    color: var(--black);
+    color: var(--teal);
+    transition: color 0.5s;
+  }
+
+  a:hover span{
+    color: var(--teal);
     transition: color 0.5s;
   }
   svg{

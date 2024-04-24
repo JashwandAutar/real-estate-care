@@ -1,114 +1,128 @@
 <script setup>
-//import TheWelcome from '../components/TheWelcome.vue'
-import { RouterLink } from 'vue-router'
-import { ref } from 'vue';
-import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiCog } from '@mdi/js';
-  
-  const icons = {
-    check: ref(mdiCheckboxBlankBadge),
-    list: ref(mdiFormatListBulletedType),
-    fileDocument: ref(mdiFileDocument),
-    cog: ref(mdiCog),
-  };
+import {ref, reactive} from "vue";
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {RouterLink, useRouter} from "vue-router";
+import { useToast } from "primevue/usetoast";
+
+const user = reactive({
+    email: "",
+    password: ""
+});
+
+const errMessage = ref();
+const router = useRouter();
+const toast = useToast();
+
+const loading = ref(false);
+const load = () => {
+    loading.value = true;
+    setTimeout(() => {
+        loading.value = false;
+    }, 2000);
+};
+
+const auth = getAuth();
+
+const Login = () =>  {
+  signInWithEmailAndPassword(auth, user.email, user.password).then((data) => {
+    load();
+    
+    router.push('/feed');
+  }).catch((err) => {
+    switch(err.message){
+      case "auth/invalid-email":
+        errMessage.value = "Invalid Email";
+        toast.add({ 
+            severity: 'Error', 
+            summary: errMessage.value, 
+            detail: 'Deze email is niet geldig: ' + user.email, 
+            life: 1000 
+        });
+        break;
+      case "auth/user-not-found":
+        errMessage.value = "User Not Found";
+        toast.add({ 
+            severity: 'Error', 
+            summary: errMessage.value, 
+            detail: 'Deze gebruiker niet gevonden/bestaat niet', 
+            life: 1000 
+        });
+        break;
+      case "auth/wrong-password":
+        errMessage.value = "Wrong Password";
+        toast.add({ 
+            severity: 'Error', 
+            summary: errMessage.value, 
+            detail: 'Deze wachtwoord is niet correct: ' + user.password, 
+            life: 1000 
+        });
+        break;
+      default:
+        errMessage.value = "Email or password was incorrect";
+        toast.add({ 
+            severity: 'Error', 
+            summary: errMessage.value, 
+            detail: 'Deze email en/of wachtwoord is niet correct: ' + user.password + user.email, 
+            life: 1000 
+        });
+        break;
+    }
+  });
+}
 </script>
 
 <template>
-  <div class="flex-box">
-    <div class="flex-item">
-      <RouterLink to="/assigned">
-        <svg-icon type="mdi" :path="icons.check.value" />
-        <span>Toegewezen Rap.</span>
+  <form>
+    <h1>Log In</h1> 
+    <FloatLabel>
+      <InputText 
+        id="user" 
+        v-model="user.email" 
+      />
+      <label for="user">E-mail</label>
+    </FloatLabel>
+    <FloatLabel>
+      <Password 
+        id="password" 
+        v-model="user.password"
+      />
+      <label for="password">Wachtwoord</label>
+    </FloatLabel>
+    <Button 
+      type="button" 
+      label="Log In" 
+      :loading="loading" 
+      @click="Login()" 
+    />
+    <p>Heeft u nog geen Account?&nbsp;
+      <RouterLink to="/register">
+        <Button label="Registreer" />
       </RouterLink>
-    </div>
-    <div class="flex-item">
-      <RouterLink to="/performed">
-        <svg-icon type="mdi" :path="icons.list.value" />
-        <span>Uitgevoerde Rap.</span>
-      </RouterLink>
-      
-    </div>
-    <div class="flex-item">
-      <RouterLink to="/knowledge">
-        <svg-icon type="mdi" :path="icons.fileDocument.value" />
-        <span>KennisBase</span>
-      </RouterLink>
-      
-    </div>
-    <div class="flex-item">
-      <RouterLink to="/settings">
-        <svg-icon type="mdi" :path="icons.cog.value" />
-        <span>Instellingen</span>
-      </RouterLink>
-    </div>
-  </div>
-    
+    </p>
+  </form>
+  <Toast />
 </template>
 <style scoped>
-  :root{
-    --square: 100px;
+  h1{
+    font-size: 1.8rem;
   }
-  .flex-box {
-    width: 100%;
+  form{
+    max-width: 600px;
+    min-height: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .spacer{
+    padding-top: 20px;
+  }
+  p{
+    font-size: 1.1rem;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .flex-item{
-    width: 49%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    border-width: 1px;
-    border-style: groove;
-    border-color: black;
-    border-radius: 8px;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    padding-bottom: 5px;
-    background-color: white;
-    transition: all 0.5s;
   }
-  .flex-item *{
-    color: var(--black);
-    background-color: white;
-    transition: all 0.5s;
-  }
-  .flex-item:hover{
-    
-    background-color: var(--black);
-  }
-  .flex-item:hover *{
-    color: var(--teal);
-    background-color: var(--black);
-  }
-  .flex-item span{
-    font-size: 2rem;
-  }
-  .flex-item span:hover{
-    color: var(--teal);
-  }
-  a{
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-block-end: 8px;
-  }
-  svg{
-    width: 10rem;
-    height: 10rem;
-  }
-  @media(max-width: 500px){
-    .flex-item span{
-      font-size: 1.1rem;
-    }
-    svg{
-      width: 7rem;
-      height: 7rem;
-    }
-  }
+
 </style>

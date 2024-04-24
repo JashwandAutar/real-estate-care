@@ -1,11 +1,11 @@
 <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref } from 'vue';
   import { RouterLink } from 'vue-router';
   
-  import SchadeTable from "../components/lists/SchadeTable.vue"; 
-  import OnderhoudTable from "../components/lists/OnderhoudTable.vue"; 
-  import InstallatieTable from "../components/lists/InstallatieTable.vue"; 
-  import ModificatieTable from "../components/lists/ModificatieTable.vue"; 
+  import DamageList from "../components/lists/DamageList.vue"; 
+  import MaintenanceList from "../components/lists/MaintenanceList.vue"; 
+  import InstallationList from "../components/lists/InstallationList.vue"; 
+  import ModificationList from "../components/lists/ModificationList.vue"; 
   import SvgIcon from '@jamescoyle/vue-icon';
   import { mdiArrowLeftThick } from '@mdi/js';
 
@@ -13,40 +13,60 @@
   
 </script>
 <template>
-    <h1><RouterLink to="/"><svg-icon type="mdi" :path="backToHome" /></RouterLink> Uitgevoerde Rapportages</h1>
-    
+    <div class="page-title">
+      <RouterLink to="/feed">
+        <svg-icon 
+          type="mdi" 
+          :path="backToHome" 
+        />
+        <span>Ga Terug</span>
+      </RouterLink>
+      <h1>Uitgevoerde Rapportages</h1>
+    </div>
     <TabView>
       <TabPanel header="Schade">
-        <SchadeTable/>
+        <DamageList/>
       </TabPanel>
       <TabPanel header="Achterstallig Onderhoud">
-        <OnderhoudTable/>
+        <MaintenanceList/>
       </TabPanel>
       <TabPanel header="Technische installaties">
-        <InstallatieTable/>
+        <InstallationList/>
       </TabPanel>
       <TabPanel header="Modificaties inventariseren">
-        <ModificatieTable/>
+        <ModificationList/>
       </TabPanel>
     </TabView>
 </template>
 
 <style scoped>
-h1{
+  h1{
+    font-size: 1.5rem;
+  }
+  .page-title{
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 1.5rem;
+    justify-content: space-between;
   }
   a{
-    color: var(--teal);
+    color: var(--black);
     transition: color 0.5s;
-    width: 60px;
-    height: 68px;
     margin-inline-end: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
   a:hover{
+    color: var(--teal);
+    transition: color 0.5s;
+  }
+  a span{
+    font-size: 1.5rem;
     color: var(--black);
+  }
+  a:hover span{
+    color: var(--teal);
     transition: color 0.5s;
   }
   svg{

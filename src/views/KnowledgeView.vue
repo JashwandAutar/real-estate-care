@@ -7,28 +7,49 @@
 
   const backToHome = ref(mdiArrowLeftThick);
 </script>
-<template>
-    <h1><RouterLink to="/"><svg-icon type="mdi" :path="backToHome" /></RouterLink> KennisBase/Documentatie</h1>
 
+<template>
+  <div class="page-title">
+    <RouterLink to="/feed">
+      <svg-icon 
+        type="mdi" 
+        :path="backToHome" 
+      />
+      <span>Ga Terug</span>
+    </RouterLink>
+    <h1>KennisBase/Documentatie</h1>
+  </div>
     <PdfViewer/>
 </template>
 
 <style scoped>
   h1{
+    font-size: 1.18rem;
+  }
+  .page-title{
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 1.18rem;
+    justify-content: space-between;
   }
   a{
-    color: var(--teal);
+    color: var(--black);
     transition: color 0.5s;
-    width: 60px;
-    height: 68px;
     margin-inline-end: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  a span{
+    font-size: 1.5rem;
+    color: var(--black);
   }
   a:hover{
-    color: var(--black);
+    color: var(--teal);
+    transition: color 0.5s;
+  }
+  a:hover span{
+    color: var(--teal);
     transition: color 0.5s;
   }
   svg{

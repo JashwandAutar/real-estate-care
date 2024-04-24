@@ -1,62 +1,102 @@
 {
   "damages": [
     {
-      "id": "1",
+      "id": "BTbvAw",
       "location": "Den Haag",
-      "newDamage": "Nieuw",
-      "typeOfDamage": "Geweld",
-      "date": "2024-01-20",
-      "acuteActionRequired": "Vereist",
-      "description": "Muur ingeslagen en waterleiding lekt"
-    },
-    {
-      "id": "2",
-      "location": "Den Haag",
-      "newDamage": "Nieuw",
-      "typeOfDamage": "Calamiteit",
-      "date": "2024-01-22",
-      "acuteActionRequired": "Vereist",
-      "description": "Grote stuk voerplint afgeschuurt"
-    },
-    {
-      "id": "3",
-      "location": "Voorburg",
       "newDamage": "Oud",
       "typeOfDamage": {
-        "name": "Anders"
+        "name": "Normaal gebruik"
       },
-      "date": "2024-03-29T23:00:00.000Z",
+      "date": "2024-04-16T22:00:00.000Z",
       "acuteActionRequired": "Niet Vereist",
-      "description": "Hek is verouderd"
+      "description": "Vloer heeft krassen"
     }
   ],
   "outstanding-maintenance": [
     {
-      "id": "1",
-      "location": "Zoetemeer",
-      "typeOfMaintenance": "elektra",
+      "id": "rCVKEE",
+      "date": "2024-01-20",
+      "location": "Den Haag",
+      "typeOfMaintenance": {
+        "name": "Schilderwerk"
+      },
       "acuteActionRequired": "Vereist",
-      "costEstimate": "0-500"
+      "costEstimate": {
+        "name": "0-500"
+      }
+    },
+    {
+      "id": "wPC9Hj",
+      "location": "Zoetemeer",
+      "date": "2024-04-19T22:00:00.000Z",
+      "typeOfMaintenance": {
+        "name": "Leidingwerk"
+      },
+      "acuteActionRequired": "Niet Vereist",
+      "costEstimate": {
+        "name": "500-1500"
+      }
     }
   ],
   "technical-installations": [
     {
       "id": "1",
+      "date": "2024-01-20",
       "location": "Rotterdam",
-      "typeOfInstallation": "Verwarming",
+      "typeOfInstallation": {
+        "name": "Verwarming"
+      },
       "reportedMalfunctions": "Radiators geven bijna geen verwarming.",
-      "approved": "Goedgekeurd",
+      "approved": "Goed Gekeurd",
       "comments": "Radiators zijn verroest voor wel 5 jaar"
+    },
+    {
+      "id": "mPalXO",
+      "location": "Voorburg",
+      "date": "2024-04-21T22:00:00.000Z",
+      "reportedMalfunctions": "Nieuwe Radiator aangesloten.",
+      "typeOfInstallation": {
+        "name": "Verwarming"
+      },
+      "approved": "Goed Gekeurd",
+      "comments": "Oude radiator weg gegooid."
+    },
+    {
+      "id": "0e7aFT",
+      "location": "Delft",
+      "date": "2024-04-21T22:00:00.000Z",
+      "reportedMalfunctions": "Nieuwe stopcontacten geïnstalleerd",
+      "typeOfInstallation": {
+        "name": "Elektra"
+      },
+      "approved": "Niet Goed Gekeurd",
+      "comments": "Te veel stopcontacten."
     }
   ],
   "modifications": [
     {
       "id": "1",
       "location": "Den Haag",
-      "executedBy": "Huurder",
+      "date": "2024-01-20",
+      "executedBy": {
+        "name": "Huurder"
+      },
       "description": "De huurder wilt een schuur maken naast de huis",
       "actionToBeTaken": "Accepteren",
       "comments": "Het is een kleine schuur"
+    },
+    {
+      "id": "r8Gd2R",
+      "location": "Delft",
+      "date": "2024-04-21T22:00:00.000Z",
+      "executedBy": {
+        "name": "Aannemer"
+      },
+      "actionToBeTaken": {
+        "name": "Laten Keuren"
+      },
+      "comments": "5 dagen geduurd",
+      "description": "Voor- en achtertuin helemaal gerenoveerd"
     }
   ]
 }
