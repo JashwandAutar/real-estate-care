@@ -4,7 +4,7 @@
   import {getAuth, onAuthStateChanged, signOut} from "firebase/auth";
   import SvgIcon from '@jamescoyle/vue-icon';
   import { mdiCheckboxBlankBadge, mdiFormatListBulletedType, mdiFileDocument, mdiCog, mdiSearchWeb } from '@mdi/js';
-  
+  import imageURL from '/src/assets/account-template.png';
   const icons = {
     check: ref(mdiCheckboxBlankBadge),
     list: ref(mdiFormatListBulletedType),
@@ -12,8 +12,7 @@
     cog: ref(mdiCog),
     searchWeb: ref(mdiSearchWeb)
   };
-  const name = ref("Jazz Autar");
-  const image = ref("/src/assets/account-template.png");
+ 
 
   const router = useRouter();
   const currentUser = ref(null);
@@ -54,7 +53,7 @@
           v-if="currentUser"
         >
           <Avatar 
-            :image=image 
+            :image=imageURL  
             size="xlarge" 
             shape="circle" 
             alt="real-estate-care-user"
