@@ -1,7 +1,4 @@
-
-
-
-# ![Static Badge](https://img.shields.io/badge/Framework-VUE-darkgreen?style=for-the-badge&color=%23239142) Real Estate Care
+# Real Estate Care  ![Gitea Last Commit](https://img.shields.io/gitea/last-commit/JashwandAutar/real-estate-care?style=for-the-badge) 
 **Demo-applicatie voor het maken van rapportages**
 ___
   
@@ -18,28 +15,46 @@ ___
 | **Web API** | Axios |
 | **Authentication** | Google FireBase |
 
-## Run application & JSON-Server 
+## Applicatie & JSON-Server 
 Open de terminal waar de project  is opgeslagen (bv. VS-Code). 
 
-### Run application locally
+### Installeer Node.js
+Voor de zekerheid download en installeer [Node.JS](https://nodejs.org/en).
 
+Type daarna deze commando in de terminal:
+```bash
+npm  install
+```
+
+### Start applicatie lokaal
 ```bash
 npm  run  dev
 ```
-Om af te sluiten druk op: **ctrl+c**  
+Om af te sluiten druk op: **q**
 
-
-### Application Online 
+### Applicatie Online 
 Link naar applicatie online: [Real-Estate-Care](https://real-estate-care-f7b63.firebaseapp.com/)
 
-### Run JSON-Server  locally
+### Installeer JSON-Server  
+```bash
+npm install -g json-server
+```
+
+### Start JSON-Server lokaal
+> LET OP: Start **eerst** de JSON-server op, voordat je de applicatie zelf opent (lokaal en online)
 ```bash
 json-server --watch src/assets/rapports.json
 ```
-Om af te sluiten druk op: **q**
+Om af te sluiten druk op: **ctrl+c**  
 
-> LET OP: Start **eerst** de JSON-server op, voordat je de applicatie zelf opent (lokaal en online)
+> LET OP: Het kan zijn dat de commando niet werkt, dus voor de zekerheid open een aparte terminaal **als Administartor** en type deze commando's erin. Probeer dan weer JSON-server op te starten.
 
+```bash
+Get-ExecutionPolicy
+```
+```bash
+Set-ExecutionPolicy 
+```
 
 ## Main.JS
 
@@ -83,20 +98,23 @@ import {initializeApp} from  'firebase/app';
 
 ### Toegewezen rapportages
 
-Op **Toegewezen rapportages** vind je de formulieren on nieuwe rapportages te maken. Klik op de tabs om verschillende soorten rapportages te maken en druk op de groene pijl om terug te gaan naar de vorige pagina.
+Op **Toegewezen rapportages** vind je de formulieren on nieuwe rapportages te maken. Klik op de tabs om verschillende soorten rapportages te maken en wanneer je op **verzend** druk, word je toe verwezen naar de**Uitgevoerde rapportages**. Druk op de groene pijl om terug te gaan naar de vorige pagina.
 
 
 ### Uitgevoerde rapportages
 
-Op **Uitgevoerde rapportages** vind je lijsten met items erin om volledige rapportages te bekijken. Klik op de tabs om verschillende soorten rapportages te bekijken en druk op de groene pijl om terug te gaan naar de vorige pagina.
+Op **Uitgevoerde rapportages** vind je lijsten met items erin om volledige rapportages te bekijken. Klik op de item om de details van de rapportage te bekijken en op de pagina krijg je de opties om deze aan te passen of verwijderen . Druk op de groene pijl om terug te gaan naar de vorige pagina.
   
-## WCAG
+## WCAG 2.1-richtlijnen
+### Wel gelukt
+- Gebruikt iconen om makkelijk te navigeren
+- Al de input-velden label-tags eraan gevoegd 
 
-1. Gebruikt iconen om makkelijk te navigeren
-1.
-1.
-1.
-1.
+ ### Niet gelukt
+- Niet alle kleuren juiste contrast gegeven (ook al is het in huisstijl)
+- Nog geen fout-indicatie geïmplementeerd op de formulieren
+
+
 
 ## Contributie
 

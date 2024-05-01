@@ -31,16 +31,16 @@ const Login = () =>  {
   }).catch((err) => {
     switch(err.message){
       case "auth/invalid-email":
-        errMessage.value = "Invalid Email";
+        errMessage.value = "Niet gelukt om in te loggen";
         toast.add({ 
             severity: 'Error', 
             summary: errMessage.value, 
-            detail: 'Deze email is niet geldig: ' + user.email, 
+            detail: 'Deze email is niet geldig' , 
             life: 1000 
         });
         break;
       case "auth/user-not-found":
-        errMessage.value = "User Not Found";
+        errMessage.value = "Niet gelukt om in te loggen";
         toast.add({ 
             severity: 'Error', 
             summary: errMessage.value, 
@@ -49,20 +49,20 @@ const Login = () =>  {
         });
         break;
       case "auth/wrong-password":
-        errMessage.value = "Wrong Password";
+        errMessage.value = "Niet gelukt om in te loggen";
         toast.add({ 
             severity: 'Error', 
             summary: errMessage.value, 
-            detail: 'Deze wachtwoord is niet correct: ' + user.password, 
+            detail: 'Deze wachtwoord is niet correct', 
             life: 1000 
         });
         break;
       default:
-        errMessage.value = "Email or password was incorrect";
+        errMessage.value = "Niet gelukt om in te loggen";
         toast.add({ 
             severity: 'Error', 
             summary: errMessage.value, 
-            detail: 'Deze email en/of wachtwoord is niet correct: ' + user.password + user.email, 
+            detail: 'Deze email en/of wachtwoord is niet correct', 
             life: 1000 
         });
         break;
@@ -85,6 +85,7 @@ const Login = () =>  {
       <Password 
         id="password" 
         v-model="user.password"
+        :feedback="false"
       />
       <label for="password">Wachtwoord</label>
     </FloatLabel>
