@@ -31,7 +31,7 @@
             detail: 'Installatie Locatie: ', 
             life: 3000 
         });
-        router.push("/performed");
+        router.push("/feed");
     };
     const onUpload = () => {
         toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });

@@ -28,7 +28,7 @@
 
     const deleteRapport = () => {
         damageRapportStore.deleteRapport(route.params.id);
-        router.push("/performed");
+        router.push("/feed");
     }
 
     const confirmDelete = () => {
@@ -50,7 +50,7 @@
     };
     
     onMounted(() => {
-        axios.get(`http://localhost:3000/damages/${route.params.id}`).then((response) => {
+        axios.get(`https://project-data-1-c7k7.onrender.com/damages/${route.params.id}`).then((response) => {
             damages.id = response.data.id;
             damages.location = response.data.location;
             damages.newDamage = response.data.newDamage;
@@ -164,10 +164,7 @@
         width: 70px;
         height: 70px;
     } 
-    :deep(.text-white){
-        color: rgba(41,52,57);
-    }
-    :deep(.text-white:hover){
-        color: rgb(255, 255, 255)
+    .confirmdialog{
+        background-color: var(--black);
     }
 </style>

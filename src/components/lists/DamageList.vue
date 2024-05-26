@@ -5,7 +5,7 @@
     
     let damages = ref([]);
     onMounted(() => {
-        axios.get('http://localhost:3000/damages').then((response) => {
+        axios.get('https://project-data-1-c7k7.onrender.com/damages').then((response) => {
             damages.value = response.data;
         });
     });

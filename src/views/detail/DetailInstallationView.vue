@@ -28,7 +28,7 @@
 
     const deleteRapport = () => {
         installationRapportStore.deleteRapport(route.params.id);
-        router.push("/performed");
+        router.push("/feed");
     }
 
     const confirmDelete = () => {
@@ -51,7 +51,7 @@
     
     //const loading = ref(true);
     onMounted(() => {
-        axios.get(`http://localhost:3000/technical-installations/${route.params.id}`).then((response) => {
+        axios.get(`https://project-data-1-c7k7.onrender.com/technical-installations/${route.params.id}`).then((response) => {
             technicalInstallations.id = response.data.id;
             technicalInstallations.location = response.data.location;
             technicalInstallations.date = response.data.date;

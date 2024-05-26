@@ -27,7 +27,7 @@
 
     const deleteRapport = () => {
         maintenanceRapportStore.deleteRapport(route.params.id);
-        router.push("/performed");
+        router.push("/feed");
     }
 
     const confirmDelete = () => {
@@ -49,7 +49,7 @@
     };
     
     onMounted(() => {
-        axios.get(`http://localhost:3000/outstanding-maintenance/${route.params.id}`).then((response) => {
+        axios.get(`https://project-data-1-c7k7.onrender.com/outstanding-maintenance/${route.params.id}`).then((response) => {
             outstandingMaintenance.id = response.data.id;
             outstandingMaintenance.date = response.data.date;
             outstandingMaintenance.location = response.data.location;

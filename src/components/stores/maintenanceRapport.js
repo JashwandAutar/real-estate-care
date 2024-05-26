@@ -15,7 +15,7 @@ export const useMaintenanceRapportStore = defineStore({
             try{
                 this.loading = true;
 
-                const data = await axios.get(`http://localhost:3000/outstanding-maintenance/${itemId}`);
+                const data = await axios.get(`https://project-data-1-c7k7.onrender.com/outstanding-maintenance/${itemId}`);
                 this.maintenances = data.data;
 
                 this.loading = false;
@@ -37,7 +37,7 @@ export const useMaintenanceRapportStore = defineStore({
                     }
                     return result;
                 }
-                await axios.post('http://localhost:3000/outstanding-maintenance/',{
+                await axios.post('https://project-data-1-c7k7.onrender.com/outstanding-maintenance/',{
                     id: makeID(6),
                     location: newItem.location,
                     date: newItem.date,
@@ -53,7 +53,7 @@ export const useMaintenanceRapportStore = defineStore({
 
         async deleteRapport(itemId){
             try {
-                await axios.delete(`http://localhost:3000/outstanding-maintenance/${itemId}`);
+                await axios.delete(`https://project-data-1-c7k7.onrender.com/outstanding-maintenance/${itemId}`);
                 
               } catch (error) {
                 console.error('Error deleting item:', error);
@@ -63,7 +63,7 @@ export const useMaintenanceRapportStore = defineStore({
 
         async editAndSave(itemId, updatedData) {
             try {
-                await axios.patch(`http://localhost:3000/outstanding-maintenance/${itemId}`, updatedData);
+                await axios.patch(`https://project-data-1-c7k7.onrender.com/outstanding-maintenance/${itemId}`, updatedData);
               
             } catch (error) {
               console.error('Error editing and saving item:', error);

@@ -35,26 +35,7 @@ Om af te sluiten druk op: **q**
 ### Applicatie Online 
 Link naar applicatie online: [Real-Estate-Care](https://real-estate-care-f7b63.firebaseapp.com/)
 
-### Installeer JSON-Server  
-```bash
-npm install -g json-server
-```
 
-### Start JSON-Server lokaal
-> LET OP: Start **eerst** de JSON-server op, voordat je de applicatie zelf opent (lokaal en online)
-```bash
-json-server --watch src/assets/rapports.json
-```
-Om af te sluiten druk op: **ctrl+c**  
-
-> LET OP: Het kan zijn dat de commando niet werkt, dus voor de zekerheid open een aparte terminaal **als Administartor** en type deze commando's erin. Probeer dan weer JSON-server op te starten.
-
-```bash
-Get-ExecutionPolicy
-```
-```bash
-Set-ExecutionPolicy 
-```
 
 ## Main.JS
 
@@ -111,10 +92,7 @@ Op **Uitgevoerde rapportages** vind je lijsten met items erin om volledige rappo
 - Al de input-velden label-tags eraan gevoegd 
 
  ### Niet gelukt
-- Niet alle kleuren juiste contrast gegeven (ook al is het in huisstijl)
 - Nog geen fout-indicatie geïmplementeerd op de formulieren
-
-
 
 ## Contributie
 

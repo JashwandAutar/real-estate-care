@@ -13,7 +13,7 @@ export const useInstallationRapportStore = defineStore({
             try{
                 this.loading = true;
 
-                const data = await axios.get(`http://localhost:3000/technical-installations/${itemId}`);
+                const data = await axios.get(`https://project-data-1-c7k7.onrender.com/technical-installations/${itemId}`);
                 this.installations = data.data;
 
                 this.loading = false;
@@ -36,7 +36,7 @@ export const useInstallationRapportStore = defineStore({
                     }
                     return result;
                 }
-                await axios.post('http://localhost:3000/technical-installations/',{
+                await axios.post('https://project-data-1-c7k7.onrender.com/technical-installations/',{
                     id: makeID(6),
                     location: newItem.location,
                     date: newItem.date,
@@ -53,7 +53,7 @@ export const useInstallationRapportStore = defineStore({
 
         async deleteRapport(itemId){
             try {
-                await axios.delete(`http://localhost:3000/technical-installations/${itemId}`);
+                await axios.delete(`https://project-data-1-c7k7.onrender.com/technical-installations/${itemId}`);
                 
               } catch (error) {
                 console.error('Error deleting item:', error);
@@ -62,7 +62,7 @@ export const useInstallationRapportStore = defineStore({
         },
         async editAndSave(itemId, updatedData) {
             try {
-              await axios.patch(`http://localhost:3000/technical-installations/${itemId}`, updatedData);
+              await axios.patch(`https://project-data-1-c7k7.onrender.com/technical-installations/${itemId}`, updatedData);
               
             } catch (error) {
               console.error('Error editing and saving item:', error);

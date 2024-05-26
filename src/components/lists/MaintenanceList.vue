@@ -5,7 +5,7 @@
     
     let maintenance = ref([]);
     onMounted(() => {
-        axios.get('http://localhost:3000/outstanding-maintenance').then((response) => {
+        axios.get('https://project-data-1-c7k7.onrender.com/outstanding-maintenance').then((response) => {
             maintenance.value = response.data;
         });
     });

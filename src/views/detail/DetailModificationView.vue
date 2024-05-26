@@ -28,7 +28,7 @@
     //const loading = ref(true);
     const deleteRapport = () => {
         modificationRapportStore.deleteRapport(route.params.id);
-        router.push("/performed");
+        router.push("/feed");
     }
 
     const confirmDelete = () => {
@@ -49,7 +49,7 @@
         });
     };
     onMounted(() => {
-        axios.get(`http://localhost:3000/modifications/${route.params.id}`).then((response) => {
+        axios.get(`https://project-data-1-c7k7.onrender.com/modifications/${route.params.id}`).then((response) => {
             modifications.id = response.data.id;
             modifications.date = response.data.date;
             modifications.location = response.data.location;

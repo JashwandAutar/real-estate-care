@@ -1,7 +1,7 @@
 import './assets/main.css';
 import './assets/theme.css';
 // import 'primevue/resources/primevue.min.css';
-import Lara from './presets/lara';
+import Lara from './presets/';
 
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -51,6 +51,7 @@ const app = createApp(App);
 
 app.use(router);
 app.use(Primevue, {unstyled: true, pt: Lara});
+
 app.use(createPinia());
 app.use(ToastService);
 app.use(ConfirmationService);

@@ -32,10 +32,10 @@
         toast.add({ 
             severity: 'Succes', 
             summary: 'Schade Rapport', 
-            detail: ' schadeLocatie: ' + damages.location + ' Nieuwe schade: ' + damages.newDamage + ' Type schade: ' + damages.typeOfDamage + ' Datum: '  + damages.date + " Acute actie vereist: " + damages.acuteActionRequired + ' Opmerkingen: ' + damages.description, 
+            detail: ' schade rapport gemaakt ', 
             life: 6000 
         });
-        router.push("/performed");
+        router.push("/feed");
     };
     
     const onUpload = () => {

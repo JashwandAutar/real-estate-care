@@ -26,7 +26,6 @@ const auth = getAuth();
 const Login = () =>  {
   signInWithEmailAndPassword(auth, user.email, user.password).then((data) => {
     load();
-    
     router.push('/feed');
   }).catch((err) => {
     switch(err.message){
@@ -77,6 +76,7 @@ const Login = () =>  {
     <FloatLabel>
       <InputText 
         id="user" 
+        type="text"
         v-model="user.email" 
       />
       <label for="user">E-mail</label>

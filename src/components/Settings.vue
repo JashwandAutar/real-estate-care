@@ -23,7 +23,7 @@
                 v-model="username" 
             />
             <label for="username">Gebruikersnaam</label>
-        </FloatLabel>>
+        </FloatLabel>
         <br>
         <FloatLabel>
             <Password 

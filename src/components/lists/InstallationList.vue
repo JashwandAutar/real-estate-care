@@ -5,7 +5,7 @@
 
     let installations = ref([]);
     onMounted(() => {
-        axios.get('http://localhost:3000/technical-installations').then((response) => {
+        axios.get('https://project-data-1-c7k7.onrender.com/technical-installations').then((response) => {
             installations.value = response.data;
         });
     });

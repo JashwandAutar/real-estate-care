@@ -14,7 +14,7 @@ export const useDamageRapportStore = defineStore({
             try{
                 this.loading = true;
 
-                const data = await axios.get(`http://localhost:3000/damages/${itemId}`);
+                const data = await axios.get(`https://project-data-1-c7k7.onrender.com/damages/${itemId}`);
                 this.damages = data.data;
 
                 this.loading = false;
@@ -38,7 +38,7 @@ export const useDamageRapportStore = defineStore({
                 }
                 
 
-                const post = await axios.post('http://localhost:3000/damages/',{
+                const post = await axios.post('https://project-data-1-c7k7.onrender.com/damages/',{
                     id: makeID(6),
                     location: newItem.location,
                     newDamage: newItem.newDamage,
@@ -56,7 +56,7 @@ export const useDamageRapportStore = defineStore({
         },
         async deleteRapport(itemId){
             try {
-                await axios.delete(`http://localhost:3000/damages/${itemId}`);
+                await axios.delete(`https://project-data-1-c7k7.onrender.com/damages/${itemId}`);
 
               } catch (error) {
                 console.error('Error deleting item:', error);
@@ -65,7 +65,7 @@ export const useDamageRapportStore = defineStore({
         },
         async editAndSave(itemId, updatedData) {
             try {
-                await axios.patch(`http://localhost:3000/damages/${itemId}`, updatedData);
+                await axios.patch(`https://project-data-1-c7k7.onrender.com/damages/${itemId}`, updatedData);
                
             } catch (error) {
               console.error('Error editing and saving item:', error);

@@ -39,8 +39,7 @@
             detail: 'Onderhoud Locatie ', 
             life: 3000 
         });
-        router.push("/performed");
-        console.log(maintenances.date);
+        router.push("/feed");
     };
 
     const onUpload = () => {

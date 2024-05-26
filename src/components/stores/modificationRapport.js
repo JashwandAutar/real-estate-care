@@ -13,7 +13,7 @@ export const useModificationRapportStore = defineStore({
             try{
                 this.loading = true;
 
-                const data = await axios.get(`http://localhost:3000/modifications/${itemId}`);
+                const data = await axios.get(`https://project-data-1-c7k7.onrender.com/modifications/${itemId}`);
                 this.modifications = data.data;
 
                 this.loading = false;
@@ -36,7 +36,7 @@ export const useModificationRapportStore = defineStore({
                     }
                     return result;
                 }
-                await axios.post('http://localhost:3000/modifications/',{
+                await axios.post('https://project-data-1-c7k7.onrender.com/modifications/',{
                     id: makeID(6),
                     location: newItem.location,
                     date: newItem.date,
@@ -53,7 +53,7 @@ export const useModificationRapportStore = defineStore({
 
         async deleteRapport(itemId){
             try {
-                await axios.delete(`http://localhost:3000/modifications/${itemId}`);
+                await axios.delete(`https://project-data-1-c7k7.onrender.com/modifications/${itemId}`);
                 
               } catch (error) {
                 console.error('Error deleting item:', error);
@@ -63,7 +63,7 @@ export const useModificationRapportStore = defineStore({
         
         async editAndSave(itemId, updatedData) {
             try {
-              await axios.patch(`http://localhost:3000/modifications/${itemId}`, updatedData);
+              await axios.patch(`https://project-data-1-c7k7.onrender.com/modifications/${itemId}`, updatedData);
               
             } catch (error) {
               console.error('Error editing and saving item:', error);
