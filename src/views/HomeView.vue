@@ -1,6 +1,6 @@
 <script setup>
 import {ref, reactive} from "vue";
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import {RouterLink, useRouter} from "vue-router";
 import { useToast } from "primevue/usetoast";
 
@@ -68,6 +68,24 @@ const Login = () =>  {
     }
   });
 }
+
+const logInGmail = () => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    console.log(result.user);
+    router.push('/feed');
+  })
+  .catch((error) => {
+    toast.add({ 
+        severity: 'Error', 
+        summary: 'Inloggen', 
+        detail: 'Inloggen niet gelukt' , 
+        life: 1000 
+      });
+    console.log(error.message);;  
+  });
+}
 </script>
 
 <template>
@@ -95,6 +113,15 @@ const Login = () =>  {
       :loading="loading" 
       @click="Login()" 
     />
+    
+    <Button 
+      type="button" 
+      label="Inloggen via G-mail" 
+      :loading="loading" 
+      @click="logInGmail()" 
+    />
+    
+    
     <p>Heeft u nog geen Account?&nbsp;
       <RouterLink to="/register">
         <Button label="Registreer" />

@@ -1,6 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

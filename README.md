@@ -1,4 +1,4 @@
-# Real Estate Care  ![Gitea Last Commit](https://img.shields.io/gitea/last-commit/JashwandAutar/real-estate-care?style=for-the-badge) 
+# Real Estate Care  
 **Demo-applicatie voor het maken van rapportages**
 ___
   
