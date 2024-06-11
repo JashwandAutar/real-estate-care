@@ -37,6 +37,7 @@ Link naar applicatie online: [Real-Estate-Care](https://real-estate-care-f7b63.f
 Je kan inloggen of registreren met gebruikersnaam en wachtwoord of je kan gelijk inloggen met je Gmail-account.
 Wanneer je bent ingelogd of geregistreerd op de applicatie, krijg je op de hoofdscherm te zien knoppen om naar andere schermen te gaan. 
 Druk op de **groene pijl** om terug te gaan naar de vorige schermen en klik **LogOut** om af te melden van de applicatie.
+Wanneer je begint met maken en bewerken van
 
 ### Toegewezen rapportages
 
@@ -46,6 +47,8 @@ Op **Toegewezen rapportages** vind je de formulieren om nieuwe rapportages te ma
 ### Uitgevoerde rapportages
 
 Op **Uitgevoerde rapportages** vind je lijsten met items erin om volledige rapportages te bekijken ook verdeeld in tabs. Klik op een item om de details van de rapportage te bekijken en op de pagina krijg je de opties om deze aan te passen of verwijderen.
+
+> Wanneer je begint met het maken en bewerken van rapportages, wacht nog 1 of 2 minuten voordat je de lijsten ziet op **Uitgevoerde rapportages**.
   
 ### KennisBase/Documentatie
 Op **KennisBase/Documentatie** zie je een PDF dat laat zien hoe alle inspecties en testprocedures gedaan moeten worden.
