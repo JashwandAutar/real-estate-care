@@ -30,7 +30,7 @@ Als laatst is de Google Firebase gebruikt voor authentication bij het inloggen e
 
 
 ### Applicatie Online 
-Link naar applicatie online: [Real-Estate-Care](https://real-estate-care-f7b63.firebaseapp.com/)
+Link naar applicatie online: [Real-Estate-Care](https://real-estate-care-f7b63.web.app/)
 
 
 ## Gebruik
